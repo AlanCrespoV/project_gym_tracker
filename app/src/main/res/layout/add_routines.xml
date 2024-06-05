@@ -9,13 +9,14 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="149dp"
         android:text="@string/rutinastxt1"
         android:textColor="@color/textColorSecondary"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +30,7 @@
         android:layout_marginBottom="23dp"
         android:background="?android:attr/listDivider"
         android:backgroundTint="@color/textColorSecondary"
-        app:layout_constraintBottom_toTopOf="@+id/addroutinebtn1"
+        app:layout_constraintBottom_toTopOf="@+id/addroutinebtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +38,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/addroutinebtn1"
+        android:id="@+id/addroutinebtn"
         android:layout_width="71dp"
         android:layout_height="49dp"
         android:layout_marginStart="290dp"
@@ -61,5 +62,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/addWandRtestbtn"
+        android:layout_width="132dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/test_add_w_r"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SmallSp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

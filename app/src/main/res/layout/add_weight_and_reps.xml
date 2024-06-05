@@ -2,9 +2,156 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addWeightandRepsActivity">
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:ignore="VisualLintBounds">
+
+    <TextView
+        android:id="@+id/tituloejercicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="35dp"
+        android:paddingBottom="32dp"
+        android:text="@string/agregar_peso_y_rep"
+        android:textColor="@color/textColorSecondary"
+        android:textColorHighlight="#00ACC1"
+        android:textColorHint="#00ACC1"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:id="@+id/pesokgtext"
+        android:layout_width="92dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="169dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="134dp"
+        android:text="@string/peso_kg"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="16dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloejercicio" />
+
+    <Button
+        android:id="@+id/restarPesobtn"
+        android:layout_width="101dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="97dp"
+        android:text="@string/restarPesobtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/sumarrepbtn"
+        android:layout_width="101dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginEnd="28dp"
+        android:text="@string/sumarrepbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+    <TextView
+        android:id="@+id/repeticionestext"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="142dp"
+        android:text="@string/repeticiones"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider4"
+        tools:ignore="TextSizeCheck" />
+
+    <Button
+        android:id="@+id/sumarPesobtn"
+        android:layout_width="101dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="35dp"
+        android:text="@string/sumarPesobtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pesokgtext"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/restarrepbtn"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="29dp"
+        android:text="@string/restarrepbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repeticionestext" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="42dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restarPesobtn" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal"
+        android:layout_width="98dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="2dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/sumarPesobtn"
+        app:layout_constraintStart_toEndOf="@+id/restarPesobtn"
+        app:layout_constraintTop_toBottomOf="@+id/pesokgtext" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal2"
+        android:layout_width="101dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="9dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/sumarrepbtn"
+        app:layout_constraintStart_toEndOf="@+id/restarrepbtn"
+        app:layout_constraintTop_toBottomOf="@+id/repeticionestext" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

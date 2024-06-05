@@ -6,17 +6,29 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class ViewRoutines extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_routines);
+
+
+        Button addWandRtestbtn = findViewById(R.id.addWandRtestbtn);
+        addWandRtestbtn.setOnClickListener(view -> {
+            Intent intent = new Intent(ViewRoutines.this, addWeightandRepsActivity.class);
+            startActivity(intent);
+
+        });
+
+        Button addroutinebtn = findViewById(R.id.addroutinebtn);
+        addroutinebtn.setOnClickListener(view -> {
+            Intent intent = new Intent(ViewRoutines.this, AddExerciteActivity.class);
+            startActivity(intent);
+
+        });
+
     }
+
+
 
 }

@@ -17,4 +17,11 @@
     <string name="restarrepbtn">-</string>
     <string name="sumarrepbtn">+</string>
     <string name="_0str">0</string>
+    <string name="crear_ejercicio">Crear Ejercicio</string>
+    <string name="nombre">Nombre</string>
+    <string name="categoria">Categoria</string>
+    <string name="ejercicio">ejercicio</string>
+    <string name="test_add_ex">test add ex</string>
+    <string name="test_add_rout">test add rout</string>
+    <string name="test_add_w_r"><![CDATA[test add w&r]]></string>
 </resources>
