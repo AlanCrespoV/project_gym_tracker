@@ -30,7 +30,7 @@
     <TextView
         android:id="@+id/pesokgtext"
         android:layout_width="130dp"
-        android:layout_height="60dp"
+        android:layout_height="42dp"
         android:text="@string/peso_kg"
         android:textColor="@color/textColorSecondary"
         android:textSize="20sp" />
@@ -41,6 +41,28 @@
         android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
 
+    <Button
+        android:id="@+id/restarPesobtn"
+        android:layout_width="139dp"
+        android:layout_height="wrap_content"
+        android:text="@string/restarPesobtn" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="263dp"
+        android:layout_height="60dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:hint="hint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/sumarPesobtn"
+        android:layout_width="139dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sumarPesobtn" />
+
     <TextView
         android:id="@+id/repeticionestext"
         android:layout_width="134dp"
@@ -50,10 +72,20 @@
         android:textSize="20sp"
         tools:ignore="TextSizeCheck" />
 
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="144dp"
+        android:layout_height="47dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="144dp"
+            android:layout_height="50dp"
+            android:hint="hint" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
