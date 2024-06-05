@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:ignore="VisualLintBounds">
 
     <TextView
         android:id="@+id/tituloejercicio"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingBottom="32dp"
-        android:text="@string/agregar_ejercicio"
+        android:text="@string/agregar_peso_y_rep"
         android:textColor="@color/textColorSecondary"
         android:textColorHighlight="#00ACC1"
         android:textColorHint="#00ACC1"
@@ -45,23 +46,27 @@
         android:id="@+id/restarPesobtn"
         android:layout_width="139dp"
         android:layout_height="wrap_content"
-        android:text="@string/restarPesobtn" />
+        android:text="@string/restarPesobtn"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="263dp"
-        android:layout_height="60dp">
+        android:layout_width="136dp"
+        android:layout_height="59dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pesoinput"
             android:layout_width="136dp"
             android:layout_height="wrap_content"
-            android:hint="hint" />
+            android:hint="@string/_0"
+            tools:ignore="DuplicateSpeakableTextCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/sumarPesobtn"
         android:layout_width="139dp"
         android:layout_height="wrap_content"
-        android:text="@string/sumarPesobtn" />
+        android:text="@string/sumarPesobtn"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/repeticionestext"
@@ -73,19 +78,27 @@
         tools:ignore="TextSizeCheck" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/restarrepbtn"
         android:layout_width="138dp"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/restarrepbtn" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="144dp"
+        android:layout_width="135dp"
         android:layout_height="47dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="144dp"
+            android:id="@+id/repinput"
+            android:layout_width="133dp"
             android:layout_height="50dp"
-            android:hint="hint" />
+            android:hint="@string/_0str"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/sumarrepbtn"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sumarrepbtn" />
 
 </LinearLayout>
