@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingBottom="32dp"
-        android:text="¡Bienvenido a tu aplicación de rutinas de ejercicio!"
-        android:textColor="#00ACC1"
+        android:text="Tu rutina"
+        android:textColor="@color/textColorSecondary"
         android:textColorHighlight="#00ACC1"
         android:textColorHint="#00ACC1"
         android:textSize="24sp"
@@ -24,17 +24,17 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/routinesRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="491dp"
         android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/addRoutineButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="Agregar Rutina"
-        android:backgroundTint="@color/colorAccent"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        android:textStyle="bold" />
 
 </LinearLayout>

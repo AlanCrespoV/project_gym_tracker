@@ -5,7 +5,7 @@
     <color name="colorAccent">#00ACC1</color>
 
     <!-- Colores de fondo -->
-    <color name="backgroundColor">#121212</color>
+    <color name="backgroundColor">#FF2B2A2A</color>
     <color name="surfaceColor">#1E1E1E</color>
 
     <!-- Colores de texto -->
