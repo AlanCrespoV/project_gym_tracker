@@ -2,6 +2,7 @@ package com.example.project_gym_tracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.database.sqlite.SQLiteDatabase;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,11 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseFirestore db;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +25,18 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Inicializar la instancia de Firestore
-        db = FirebaseFirestore.getInstance();
+        // Inicializar la instancia de SQLite
+        db = DatabaseManager.getInstance(this).getDatabase();
+
         if (usuarioHaIniciadoSesion()) {
             // Si el usuario ha iniciado sesión, iniciamos WelcomeActivity
             iniciarWelcomeActivity();
         }
     }
+
     private boolean usuarioHaIniciadoSesion() {
+        // Implementar la lógica de verificación de sesión con SQLite
+        // Ejemplo: Comprobar si hay un usuario en la base de datos
         return true;
     }
 
