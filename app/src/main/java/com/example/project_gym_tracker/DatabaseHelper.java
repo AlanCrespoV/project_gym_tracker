@@ -8,7 +8,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "gym_tracker.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2; // Incrementa la versión para la actualización
     private static final String TAG = "DatabaseHelper";
 
     public DatabaseHelper(Context context) {
@@ -24,12 +24,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO users (name, email, pwd) VALUES ('yoo', 'CEO_of_SEX@example.com', 'password123')");
         db.execSQL("INSERT INTO users (name, email, pwd) VALUES ('idk', 'idk@example.com', 'password123')");
         db.execSQL("INSERT INTO users (name, email, pwd) VALUES ('userLol', 'lol@example.com', 'password123')");
+
+        db.execSQL("CREATE TABLE routines (id INTEGER PRIMARY KEY, name TEXT, username TEXT)");
+        db.execSQL("CREATE TABLE exercises (id INTEGER PRIMARY KEY, routine_id INTEGER, name TEXT, muscle_group TEXT, reps INTEGER, sets INTEGER, weight REAL, FOREIGN KEY(routine_id) REFERENCES routines(id))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion);
-        db.execSQL("DROP TABLE IF EXISTS users");
-        onCreate(db);
+        if (oldVersion < 2) {
+            db.execSQL("ALTER TABLE routines ADD COLUMN username TEXT");
+        }
     }
 }

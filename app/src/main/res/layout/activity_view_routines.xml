@@ -5,22 +5,16 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Mensaje de bienvenida -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingBottom="32dp"
         android:text="Tus rutinas"
-        android:textColor="@color/textColorSecondary"
-        android:textColorHighlight="#00ACC1"
-        android:textColorHint="#00ACC1"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:paddingBottom="24dp"
+        android:textColor="@color/textColorSecondary" />
 
-    <!-- Lista de rutinas -->
-
-    <!-- Botón para agregar rutina -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/routinesRecyclerView"
         android:layout_width="match_parent"
@@ -37,4 +31,23 @@
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/addWandRtestbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Peso y Repeticiones"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/addroutinebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Ejercicio"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>

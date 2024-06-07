@@ -13,24 +13,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectGymTracker"
         tools:targetApi="31">
+
         <activity
-            android:name=".addWeightandRepsActivity"
+            android:name=".AddWeightAndRepsActivity"
             android:exported="false" />
         <activity
             android:name=".AddExerciteActivity"
-            android:exported="false" /> <!-- Login Activity -->
+            android:exported="false" />
+
+        <!-- AddRoutineActivity -->
+        <activity
+            android:name=".AddRoutineActivity"
+            android:exported="false" />
+
+        <!-- Login Activity -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Main Activity -->
+        </activity>
+
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
         <activity android:name=".WelcomeActivity" />
         <activity
             android:name=".ViewRoutines"
@@ -38,5 +48,4 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgotPasswordActivity" />
     </application>
-
 </manifest>

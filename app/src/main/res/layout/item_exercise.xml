@@ -6,18 +6,26 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/nameTextView"
+        android:id="@+id/exercise_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Nombre del Ejercicio"
         android:textSize="18sp"
-        android:textColor="@color/colorAccent"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:paddingBottom="4dp"/>
 
     <TextView
-        android:id="@+id/exercisesTextView"
+        android:id="@+id/muscle_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Grupo Muscular"
         android:textSize="16sp"
-        android:textColor="@android:color/white"/>
+        android:paddingBottom="4dp"/>
 
+    <TextView
+        android:id="@+id/sets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cantidad de Series"
+        android:textSize="16sp"/>
 </LinearLayout>

@@ -25,4 +25,21 @@
     <string name="test_add_rout">test add rout</string>
     <string name="test_add_w_r"><![CDATA[test add w&r]]></string>
     <string name="a_adir_ejercicio">Añadir Ejercicio</string>
+    <string-array name="days_array">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miércoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sábado</item>
+        <item>Domingo</item>
+    </string-array>
+    <string-array name="body_parts_array">
+        <item>Piernas</item>
+        <item>Pecho</item>
+        <item>Bíceps</item>
+        <item>Tríceps</item>
+        <item>Espalda</item>
+        <item>Hombros</item>
+    </string-array>
 </resources>

@@ -40,7 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 try {
                     if (validateCredentials(username, password)) {
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                        intent.putExtra("USERNAME", username);
                         startActivity(intent);
                         finish();
                     } else {
