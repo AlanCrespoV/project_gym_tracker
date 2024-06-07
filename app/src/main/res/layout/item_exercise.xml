@@ -12,6 +12,7 @@
         android:text="Nombre del Ejercicio"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/colorAccent"
         android:paddingBottom="4dp"/>
 
     <TextView
@@ -19,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Grupo Muscular"
+        android:textColor="@color/colorAccent"
         android:textSize="16sp"
         android:paddingBottom="4dp"/>
 
@@ -27,5 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cantidad de Series"
+        android:textColor="@color/colorAccent"
         android:textSize="16sp"/>
 </LinearLayout>

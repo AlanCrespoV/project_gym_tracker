@@ -47,5 +47,6 @@
             android:exported="true" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".EditRoutineActivity" android:exported="false" />
     </application>
 </manifest>

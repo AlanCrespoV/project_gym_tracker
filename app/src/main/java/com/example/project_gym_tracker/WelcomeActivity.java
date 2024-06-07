@@ -12,8 +12,8 @@ import java.util.List;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private RoutinesAdapter adapter;
+    private RecyclerView routinesRecyclerView;
+    private RoutinesAdapter routinesAdapter;
     private RoutinesRepository routinesRepository;
     private String currentUser;
 
@@ -22,28 +22,23 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        routinesRepository = new RoutinesRepository(this);
-
-        // Obtener el usuario actual desde el intent
-        currentUser = getIntent().getStringExtra("USERNAME");
-        if (currentUser == null) {
-            // Si no hay un usuario actual, redirigir al LoginActivity
-            Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-            return;
-        }
-
-        // Obtener rutinas del usuario actual desde la base de datos
-        List<Routine> routines = routinesRepository.getRoutinesByUser(currentUser);
-
-        // Configurar el RecyclerView
-        recyclerView = findViewById(R.id.routinesRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RoutinesAdapter(routines);
-        recyclerView.setAdapter(adapter);
-
+        routinesRecyclerView = findViewById(R.id.routinesRecyclerView);
         Button addRoutineButton = findViewById(R.id.addRoutineButton);
+
+        routinesRepository = new RoutinesRepository(this);
+        currentUser = getIntent().getStringExtra("USERNAME");
+
+        // Obtener las rutinas del usuario actual
+        List<Routine> routines = routinesRepository.getRoutinesByUser(currentUser);
+        routinesAdapter = new RoutinesAdapter(routines, routineId -> {
+            Intent intent = new Intent(WelcomeActivity.this, EditRoutineActivity.class);
+            intent.putExtra("ROUTINE_ID", routineId);
+            startActivity(intent);
+        });
+
+        routinesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        routinesRecyclerView.setAdapter(routinesAdapter);
+
         addRoutineButton.setOnClickListener(view -> {
             Intent intent = new Intent(WelcomeActivity.this, AddRoutineActivity.class);
             intent.putExtra("USERNAME", currentUser);

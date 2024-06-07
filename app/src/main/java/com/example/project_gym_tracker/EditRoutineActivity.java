@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddRoutineActivity extends AppCompatActivity {
+public class EditRoutineActivity extends AppCompatActivity {
 
     private EditText routineNameEditText;
     private Spinner daySpinner;
@@ -24,16 +24,18 @@ public class AddRoutineActivity extends AppCompatActivity {
     private EditText exerciseSetsEditText;
     private Button addExerciseButton;
     private Button saveRoutineButton;
+    private Button startRoutineButton;
     private RecyclerView exercisesRecyclerView;
     private ExercisesAdapter exercisesAdapter;
     private RoutinesRepository routinesRepository;
-    private String currentUser;
+    private int routineId;
+    private Routine routine;
     private List<Exercise> exercises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_routine);
+        setContentView(R.layout.activity_edit_routine);
 
         routineNameEditText = findViewById(R.id.routineName);
         daySpinner = findViewById(R.id.daySpinner);
@@ -42,6 +44,7 @@ public class AddRoutineActivity extends AppCompatActivity {
         exerciseSetsEditText = findViewById(R.id.exerciseSets);
         addExerciseButton = findViewById(R.id.addExerciseButton);
         saveRoutineButton = findViewById(R.id.saveRoutineButton);
+        startRoutineButton = findViewById(R.id.startRoutineButton);
         exercisesRecyclerView = findViewById(R.id.exercisesRecyclerView);
 
         routinesRepository = new RoutinesRepository(this);
@@ -50,9 +53,21 @@ public class AddRoutineActivity extends AppCompatActivity {
         exercisesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         exercisesRecyclerView.setAdapter(exercisesAdapter);
 
-        currentUser = getIntent().getStringExtra("USERNAME");
+        routineId = getIntent().getIntExtra("ROUTINE_ID", -1);
+        if (routineId == -1) {
+            finish();
+            return;
+        }
 
-        // Configurar los Spinners
+        routine = routinesRepository.getRoutineById(routineId);
+        if (routine != null) {
+            routineNameEditText.setText(routine.getName());
+            // Set daySpinner and bodyPartSpinner selections based on the routine details
+            exercises.addAll(routine.getExercises());
+            exercisesAdapter.notifyDataSetChanged();
+        }
+
+        // Configurar Spinners
         ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.days_array, android.R.layout.simple_spinner_item);
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,7 +84,7 @@ public class AddRoutineActivity extends AppCompatActivity {
             String setsStr = exerciseSetsEditText.getText().toString();
 
             if (exerciseName.isEmpty() || muscleGroup.isEmpty() || setsStr.isEmpty()) {
-                Toast.makeText(AddRoutineActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditRoutineActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
             } else {
                 int sets = Integer.parseInt(setsStr);
                 Exercise exercise = new Exercise(exerciseName, muscleGroup, 0, sets, 0.0);
@@ -78,35 +93,32 @@ public class AddRoutineActivity extends AppCompatActivity {
 
                 exerciseNameEditText.setText("");
                 exerciseSetsEditText.setText("");
-                Toast.makeText(AddRoutineActivity.this, "Ejercicio agregado correctamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditRoutineActivity.this, "Ejercicio agregado correctamente", Toast.LENGTH_SHORT).show();
             }
         });
 
         saveRoutineButton.setOnClickListener(view -> {
             String routineName = routineNameEditText.getText().toString();
-            String routineDay = daySpinner.getSelectedItem().toString();
-            String bodyPart = bodyPartSpinner.getSelectedItem().toString();
 
             if (routineName.isEmpty()) {
-                Toast.makeText(AddRoutineActivity.this, "Por favor, ingrese el nombre de la rutina", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditRoutineActivity.this, "Por favor, ingrese el nombre de la rutina", Toast.LENGTH_SHORT).show();
             } else {
-                // Generar un ID único para la rutina
-                int routineId = generateRoutineId();
-                Routine routine = new Routine(routineId, routineName, exercises, currentUser);
-                routinesRepository.insertRoutine(routine, currentUser);
+                routine.setName(routineName);
+                routine.setExercises(exercises);
+                routinesRepository.updateRoutine(routineId, routineName, exercises); // Llamar al método con los argumentos correctos
 
-                Toast.makeText(AddRoutineActivity.this, "Rutina agregada correctamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditRoutineActivity.this, "Rutina actualizada correctamente", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(AddRoutineActivity.this, WelcomeActivity.class);
-                intent.putExtra("USERNAME", currentUser);
+                Intent intent = new Intent(EditRoutineActivity.this, WelcomeActivity.class);
+                intent.putExtra("USERNAME", routine.getUsername());
                 startActivity(intent);
                 finish();
             }
         });
-    }
 
-    private int generateRoutineId() {
-        // Generar un ID único para la rutina, puedes ajustar esto según tu lógica de generación de ID
-        return (int) (System.currentTimeMillis() / 1000);
+        startRoutineButton.setOnClickListener(view -> {
+            // Implementar la lógica para empezar la rutina
+            Toast.makeText(EditRoutineActivity.this, "Rutina comenzada", Toast.LENGTH_SHORT).show();
+        });
     }
 }

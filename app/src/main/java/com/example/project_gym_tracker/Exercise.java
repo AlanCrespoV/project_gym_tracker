@@ -1,13 +1,24 @@
 package com.example.project_gym_tracker;
 
 public class Exercise {
+    private int id;
     private String name;
     private String muscleFocus;
     private int repetitions;
     private int sets;
     private double weight;
 
-    // Constructor
+    // Constructor con ID
+    public Exercise(int id, String name, String muscleFocus, int repetitions, int sets, double weight) {
+        this.id = id;
+        this.name = name;
+        this.muscleFocus = muscleFocus;
+        this.repetitions = repetitions;
+        this.sets = sets;
+        this.weight = weight;
+    }
+
+    // Constructor sin ID
     public Exercise(String name, String muscleFocus, int repetitions, int sets, double weight) {
         this.name = name;
         this.muscleFocus = muscleFocus;
@@ -17,6 +28,14 @@ public class Exercise {
     }
 
     // Getters y setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

@@ -10,26 +10,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHolder> {
+public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.RoutineViewHolder> {
 
     private List<Routine> routines;
+    private OnRoutineClickListener onRoutineClickListener;
 
-    // Constructor
-    public RoutinesAdapter(List<Routine> routines) {
+    public interface OnRoutineClickListener {
+        void onRoutineClick(int routineId);
+    }
+
+    public RoutinesAdapter(List<Routine> routines, OnRoutineClickListener onRoutineClickListener) {
         this.routines = routines;
+        this.onRoutineClickListener = onRoutineClickListener;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RoutineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_routine, parent, false);
-        return new ViewHolder(view);
+        return new RoutineViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RoutineViewHolder holder, int position) {
         Routine routine = routines.get(position);
-        holder.bind(routine);
+        holder.nameTextView.setText(routine.getName());
+        StringBuilder exercisesText = new StringBuilder();
+        for (Exercise exercise : routine.getExercises()) {
+            exercisesText.append(exercise.getName()).append(", ");
+        }
+        holder.exercisesTextView.setText(exercisesText.toString());
+        holder.itemView.setOnClickListener(v -> onRoutineClickListener.onRoutineClick(routine.getId()));
     }
 
     @Override
@@ -37,26 +48,14 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHo
         return routines.size();
     }
 
-    // Clase ViewHolder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView nameTextView;
-        private TextView exercisesTextView;
+    public static class RoutineViewHolder extends RecyclerView.ViewHolder {
+        TextView nameTextView;
+        TextView exercisesTextView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public RoutineViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             exercisesTextView = itemView.findViewById(R.id.exercisesTextView);
         }
-
-        public void bind(Routine routine) {
-            nameTextView.setText(routine.getName());
-
-            StringBuilder exercisesBuilder = new StringBuilder();
-            for (Exercise exercise : routine.getExercises()) {
-                exercisesBuilder.append(exercise.getName()).append("\n");
-            }
-            exercisesTextView.setText(exercisesBuilder.toString());
-        }
     }
 }
-
