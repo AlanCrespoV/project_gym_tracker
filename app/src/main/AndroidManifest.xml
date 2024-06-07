@@ -35,6 +35,8 @@
         <activity
             android:name=".ViewRoutines"
             android:exported="true" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ForgotPasswordActivity" />
     </application>
 
 </manifest>
